@@ -7,8 +7,13 @@ import sys
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'blango.settings')
+    #to specify which of the Configuration classes it should load
+    os.environ.setdefault("DJANGO_CONFIGURATION", "Dev")
     try:
-        from django.core.management import execute_from_command_line
+        # it was like this before using django config
+        # from django.core.management import execute_from_command_line
+        # after:
+        from configurations.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
